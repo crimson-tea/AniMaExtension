@@ -55,8 +55,13 @@ async function finishedWatching() {
   const linkElement = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
   const pageUrl = linkElement.href;
   const watchIdSegment = pageUrl.split('/').pop();
-  const watchId = watchIdSegment?.slice(0, watchIdSegment.lastIndexOf('_p'));
-  const numberOfEpisodes = watchIdSegment?.slice(watchIdSegment.lastIndexOf('_p') + 2);
+  const watchIdSegmentWithoutQuery = watchIdSegment?.split('?').shift();
+  const watchId = watchIdSegmentWithoutQuery
+    ?.split('?')[0]
+    ?.slice(0, watchIdSegmentWithoutQuery.lastIndexOf('_p'));
+  const numberOfEpisodes = watchIdSegmentWithoutQuery?.slice(
+    watchIdSegmentWithoutQuery.lastIndexOf('_p') + 2
+  );
 
   await fetch(`http://localhost:5000/Anime/Watched/${watchId}/${numberOfEpisodes}`, {
     method: 'POST',
