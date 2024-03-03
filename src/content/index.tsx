@@ -87,7 +87,7 @@ async function handleCloseReccomendButton() {
 
 async function handleCloseNextButtonaa() {
   const elem = document.querySelector(
-    "button[tabindex='0'].com-vod-VODNextProgramInfo__cancel-button"
+    "button[tabindex='0'].com-vod-VODPlayerNextContentRecommendBase__cancel-button"
   ) as HTMLButtonElement;
   if (!elem) {
     return;
@@ -106,4 +106,4 @@ const reccomendEpisodeTimer = setInterval(handleCloseNextButtonaa, 100);
 const nextEpisodeTimer = setInterval(handleCloseReccomendButton, 100);
 observePlaybackTime();
 
-export {};
+export { };
